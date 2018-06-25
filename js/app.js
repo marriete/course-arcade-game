@@ -62,6 +62,11 @@ Player.prototype.handleInput = function(keyPressed) {
 // Place the player object in a variable called player
 let player = new Player(200, 400);
 let allEnemies = [];
+let enemyYPositions = [60, 143, 226];
+enemyYPositions.forEach(function(element) {
+    let enemy = new Enemy(0, element, 150 + Math.floor(Math.random()*400));
+    allEnemies.push(enemy);
+});
 
 
 // This listens for key presses and sends the keys to your
