@@ -6,8 +6,8 @@ var Enemy = function(x, y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.width = 50;
-    this.height = 50;
+    this.width = 39;
+    this.height = 30;
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -23,8 +23,11 @@ Enemy.prototype.update = function(dt) {
 
     // Collision detection
     for(let i = 0; i < 3; i++) {
-        if(((allEnemies[i].x + allEnemies[i].width) > (player.x - player.width)) && ((allEnemies[i].y + 8) == player.y)) {
-        console.log('Collision detected');
+        //if(((allEnemies[i].x - allEnemies[i].width) > (player.x - player.width)) && ((allEnemies[i].y + 8) == player.y)) {
+        if(((allEnemies[i].x + allEnemies[i].width < (player.x + player.width) && allEnemies[i].x + allEnemies[i].width > (player.x - player.width)) ||
+            (allEnemies[i].x - allEnemies[i].width < (player.x + player.width) && allEnemies[i].x - allEnemies[i].width > (player.x - player.width))) &&
+            (((allEnemies[i].y + 8) == player.y))) {
+        //console.log('Collision detected');
         //alert('Collision detected');
         }
     }
@@ -47,8 +50,8 @@ Enemy.prototype.render = function() {
 var Player = function(x, y) {
     // Variables designated for the player class
     this.sprite = 'images/char-boy.png';
-    this.width = 50;
-    this.height = 50;
+    this.width = 39;
+    this.height = 33;
     this.x = x;
     this.y = y;
 }
