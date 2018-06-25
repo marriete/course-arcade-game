@@ -18,6 +18,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x += this.speed * dt;
+
+    if(this.x > 500) {
+        this.x = -100;
+        this.speed = 150 + Math.floor(Math.random() * 300);
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -64,7 +69,7 @@ let player = new Player(200, 400);
 let allEnemies = [];
 let enemyYPositions = [60, 143, 226];
 enemyYPositions.forEach(function(element) {
-    let enemy = new Enemy(0, element, 150 + Math.floor(Math.random()*400));
+    let enemy = new Enemy(-100, element, 150 + Math.floor(Math.random() * 300));
     allEnemies.push(enemy);
 });
 
