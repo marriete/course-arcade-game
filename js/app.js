@@ -21,6 +21,14 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += this.speed * dt;
 
+    // Collision detection
+    for(let i = 0; i < 3; i++) {
+        if(((allEnemies[i].x + allEnemies[i].width) > (player.x - player.width)) && ((allEnemies[i].y + 8) == player.y)) {
+        console.log('Collision detected');
+        //alert('Collision detected');
+        }
+    }
+
     // Reset enemy position and gain new speed
     if(this.x > 500) {
         this.x = -100;
