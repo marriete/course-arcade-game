@@ -6,6 +6,8 @@ var Enemy = function(x, y, speed) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.width = 100;
+    this.height = 100;
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -19,6 +21,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += this.speed * dt;
 
+    // Reset enemy position and gain new speed
     if(this.x > 500) {
         this.x = -100;
         this.speed = 150 + Math.floor(Math.random() * 300);
@@ -34,9 +37,10 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x, y) {
-
-    //
+    // Variables designated for the player class
     this.sprite = 'images/char-boy.png';
+    this.width = 100;
+    this.height = 100;
     this.x = x;
     this.y = y;
 }
@@ -72,6 +76,7 @@ Player.prototype.handleInput = function(keyPressed) {
 let player = new Player(200, 400);
 let allEnemies = [];
 let enemyYPositions = [60, 143, 226];
+
 enemyYPositions.forEach(function(element) {
     let enemy = new Enemy(-100, element, 150 + Math.floor(Math.random() * 300));
     allEnemies.push(enemy);
