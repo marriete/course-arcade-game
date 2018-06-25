@@ -27,8 +27,7 @@ Enemy.prototype.update = function(dt) {
         if(((allEnemies[i].x + allEnemies[i].width < (player.x + player.width) && allEnemies[i].x + allEnemies[i].width > (player.x - player.width)) ||
             (allEnemies[i].x - allEnemies[i].width < (player.x + player.width) && allEnemies[i].x - allEnemies[i].width > (player.x - player.width))) &&
             (((allEnemies[i].y + 8) == player.y))) {
-        //console.log('Collision detected');
-        //alert('Collision detected');
+            player.resetPosition();
         }
     }
 
@@ -56,7 +55,12 @@ var Player = function(x, y) {
     this.y = y;
 }
 
-// Update the player's position, required method for game
+// Resets player position on collision or after reaching water
+Player.prototype.resetPosition = function() {
+    this.x = 200;
+    this.y = 400;
+}
+
 Player.prototype.update = function() {
 
 }
