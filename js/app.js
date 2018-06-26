@@ -61,14 +61,15 @@ Player.prototype.resetPosition = function() {
     this.y = 400;
 }
 
-Player.prototype.update = function() {
+// Required function for game operation
+Player.prototype.update = function() {}
 
-}
-
+// Required function for game operation that renders the player model on screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+// Function for Player class that handles the corresponding arrow key press
 Player.prototype.handleInput = function(keyPressed) {
     if(keyPressed == 'up') {
         this.y -= 83;
