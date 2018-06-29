@@ -24,15 +24,11 @@ Enemy.prototype.update = function(dt) {
     this.x += this.speed * dt;
 
     // Collision detection
-    for(let i = 0; i < 3; i++) {
-        //if(((allEnemies[i].x - allEnemies[i].width) > (player.x - player.width)) && ((allEnemies[i].y + 8) == player.y)) {
-        if(((allEnemies[i].x + allEnemies[i].width < (player.x + player.width) && allEnemies[i].x + allEnemies[i].width > (player.x - player.width)) ||
-            (allEnemies[i].x - allEnemies[i].width < (player.x + player.width) && allEnemies[i].x - allEnemies[i].width > (player.x - player.width))) &&
-            (((allEnemies[i].y + 8) == player.y))) {
-            player.resetPosition();
-        }
+    if(((this.x + this.width < (player.x + player.width) && this.x + this.width > (player.x - player.width)) ||
+        (this.x - this.width < (player.x + player.width) && this.x - this.width > (player.x - player.width))) &&
+        (((this.y + 8) == player.y))) {
+        player.resetPosition();
     }
-
     // Reset enemy position and gain new speed
     if(this.x > 500) {
         this.x = -100;
