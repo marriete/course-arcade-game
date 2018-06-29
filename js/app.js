@@ -64,7 +64,11 @@ Player.prototype.resetPosition = function() {
 }
 
 // Required function for game operation
-Player.prototype.update = function() {}
+Player.prototype.update = function() {
+   if(this.y < 0) {
+        this.resetPosition();
+    }
+}
 
 // Required function for game operation that renders the player model on screen
 Player.prototype.render = function() {
@@ -81,9 +85,6 @@ Player.prototype.handleInput = function(keyPressed) {
         this.x -= 102;
     } else if(keyPressed == 'right' && this.x < 400) {
         this.x += 102;
-    }
-    if(this.y < 0) {
-        this.resetPosition();
     }
 }
 
