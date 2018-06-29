@@ -1,3 +1,5 @@
+"use strict";
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -81,8 +83,7 @@ Player.prototype.handleInput = function(keyPressed) {
         this.x += 102;
     }
     if(this.y < 0) {
-        this.x = 200;
-        this.y = 400;
+        this.resetPosition();
     }
 }
 
